@@ -11,16 +11,12 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT COUNT(ID) as Jumlah_Users FROM users";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "ID: " . $row["ID"]. " - Nama: " . $row["Nama"]. " - Alamat " . $row["Alamat"]. " - Jabatan " . $row["Jabatan"]."<br>";
-  }
-} else {
-  echo "0 results";
-}
+$result->fetch_assoc();
+echo $result['Jumlah_Users'];
+
+
 $conn->close();
 ?>
