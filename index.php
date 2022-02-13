@@ -11,11 +11,11 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT COUNT(ID) as Jumlah_Users FROM users";
-$result = $conn->query($sql);
 
-$result->fetch_assoc();
-echo $result('Jumlah_Users');
+
+$result=mysql_query("SELECT count(ID) as total from users");
+$data=mysql_fetch_assoc($result);
+echo $data['total'];
 
 
 $conn->close();
