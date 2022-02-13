@@ -14,8 +14,8 @@ if ($conn->connect_error) {
 $sql = "SELECT COUNT(ID) as Jumlah_Users FROM users";
 $result = $conn->query($sql);
 
-$data = $result->fetch_assoc();
-echo $data;
+$result->mysqli_fetch_assoc();
+echo $result;
 
 
 $conn->close();
